@@ -869,6 +869,13 @@
             box-shadow: 0 6px 18px rgba(209, 114, 75, 0.4);
         }
 
+        .cda-arrow {
+            display: inline-block;
+            width: .9em;
+            height: .9em;
+            vertical-align: -.08em;
+        }
+
         .cda-visit span {
             font-size: 16px;
             transition: transform var(--cda-transition);
@@ -1096,9 +1103,13 @@
             }
 
             .cda-view-tabs {
-                top: 84px;
+                top: calc(32px + var(--cda-title-h, 52px));
                 right: auto;
                 left: 20px;
+            }
+
+            .cda-scene-title {
+                right: 72px;
             }
 
             .cda-camera-controls {
@@ -1519,23 +1530,23 @@ html, body { background: #D6D1C4; }
     <div class="cda cda-section" id="cda-locator">
         
         <main class="cda-workspace">
-            <aside class="cda-sidebar" aria-label="Les dix parcelles">
+            <aside class="cda-sidebar" aria-label="Les dix parcelles" data-i18n-aria="sidebar">
                 
-                <div class="cda-filters" role="group" aria-label="Disponibilité des terrains"><button data-filter="all"
-                        aria-pressed="false">Tous les terrains <span>10</span></button><button data-filter="available"
+                <div class="cda-filters" role="group" aria-label="Disponibilité des terrains" data-i18n-aria="filters"><button data-filter="all" data-i18n-text="filterAll"
+                        aria-pressed="false">Tous les terrains <span>10</span></button><button data-filter="available" data-i18n-text="filterAvailable"
                         aria-pressed="true">Disponibles <span>5</span></button></div>
                 <div class="cda-lots" id="cda-lots"></div>
                 
             </aside>
-            <section class="cda-scene" aria-label="Maquette interactive du lotissement">
+            <section class="cda-scene" aria-label="Maquette interactive du lotissement" data-i18n-aria="scene">
                 <div class="cda-scene-title">
                     <p class="cda-eyebrow" id="cda-scene-eyebrow">LE CLOS, EN PERSPECTIVE</p>
                     <h2 id="cda-scene-title">Votre futur cadre de vie.</h2>
                 </div>
-                <div class="cda-view-tabs" role="group" aria-label="Mode de visualisation"><button data-view="3d"
-                        aria-pressed="true">Vue 3D</button><button data-view="plan" aria-pressed="false">Vue du
-                        dessus</button><button data-view="photos" aria-pressed="false">Photos</button></div>
-                <div class="cda-canvas-wrap" id="cda-canvas-wrap"><canvas id="cda-canvas" tabindex="0"
+                <div class="cda-view-tabs" role="group" aria-label="Mode de visualisation" data-i18n-aria="views"><button data-view="3d" data-i18n="view3d"
+                        aria-pressed="true">Vue 3D</button><button data-view="plan" data-i18n="viewPlan" aria-pressed="false">Vue du
+                        dessus</button><button data-view="photos" data-i18n="viewPhotos" aria-pressed="false">Photos</button></div>
+                <div class="cda-canvas-wrap" id="cda-canvas-wrap"><canvas id="cda-canvas" tabindex="0" data-i18n-aria="canvas"
                         aria-label="Maquette du Clos des Arts. Faites glisser pour tourner, utilisez les flèches du clavier, ou sélectionnez un terrain dans la liste."></canvas>
                     <div class="cda-pins" id="cda-pins"></div>
                     <div class="cda-map-label" id="cda-road-label">Clos des Armuriers</div>
@@ -1547,46 +1558,46 @@ html, body { background: #D6D1C4; }
                             <h3 id="cda-photo-title"></h3>
                             <p id="cda-photo-caption"></p>
                         </div>
-                        <div class="cda-photo-pager"><button id="cda-photo-prev"
+                        <div class="cda-photo-pager"><button id="cda-photo-prev" data-i18n-aria="photoPrev"
                                 aria-label="Photo précédente">←</button><span id="cda-photo-index"></span><button
-                                id="cda-photo-next" aria-label="Photo suivante">→</button></div>
+                                id="cda-photo-next" data-i18n-aria="photoNext" aria-label="Photo suivante">→</button></div>
                     </div>
                 </div>
-                <div class="cda-camera-controls" id="cda-camera-controls" role="group"
-                    aria-label="Manipuler la maquette"><button id="cda-zoom-in" aria-label="Zoom avant"
-                        title="Zoom avant">+</button><button id="cda-zoom-out" aria-label="Zoom arrière"
-                        title="Zoom arrière">−</button><button id="cda-rotate-left" aria-label="Tourner vers la gauche"
-                        title="Tourner">↶</button><button id="cda-reset" aria-label="Recentrer la maquette"
+                <div class="cda-camera-controls" id="cda-camera-controls" role="group" data-i18n-aria="controls"
+                    aria-label="Manipuler la maquette"><button id="cda-zoom-in" aria-label="Zoom avant" data-i18n-aria="zoomIn" data-i18n-title="zoomIn"
+                        title="Zoom avant">+</button><button id="cda-zoom-out" aria-label="Zoom arrière" data-i18n-aria="zoomOut" data-i18n-title="zoomOut"
+                        title="Zoom arrière">−</button><button id="cda-rotate-left" aria-label="Tourner vers la gauche" data-i18n-aria="rotateLeft" data-i18n-title="rotate"
+                        title="Tourner">↶</button><button id="cda-reset" aria-label="Recentrer la maquette" data-i18n-aria="resetView" data-i18n-title="reset"
                         title="Recentrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" />
                             <circle cx="12" cy="12" r="3" />
                         </svg></button></div>
-                <div class="cda-compass" id="cda-compass" aria-label="Repère du nord"><span>N</span><svg
+                <div class="cda-compass" id="cda-compass" aria-label="Repère du nord" data-i18n-aria="compass"><span>N</span><svg
                         viewBox="0 0 60 60">
                         <path d="M30 8 38 44 30 38 22 44Z" fill="currentColor" />
                         <path d="M30 8 30 38 22 44Z" fill="#d6d1c4" />
                     </svg></div>
                 <article class="cda-detail" id="cda-detail" hidden aria-labelledby="cda-detail-title"><button
-                        class="cda-close" id="cda-close" aria-label="Fermer la fiche">×</button>
+                        class="cda-close" id="cda-close" aria-label="Fermer la fiche" data-i18n-aria="closeCard">×</button>
                     <p class="cda-eyebrow" id="cda-detail-label"></p>
                     <h3 id="cda-detail-title"></h3>
                     <p class="cda-detail-description" id="cda-detail-description"></p>
                     <div class="cda-facts">
-                        <div><span>Superficie</span><strong id="cda-area"></strong></div>
-                        <div><span>Orientation indiquée</span><strong id="cda-orientation"></strong></div>
+                        <div><span data-i18n="area">Superficie</span><strong id="cda-area"></strong></div>
+                        <div><span data-i18n="orientation">Orientation indiquée</span><strong id="cda-orientation"></strong></div>
                     </div>
-                    <p class="cda-common">Terrain viabilisé · Maison 4 façades<br>Libre d’architecte et de constructeur
+                    <p class="cda-common" data-i18n-html="common">Terrain viabilisé · Maison 4 façades<br>Libre d’architecte et de constructeur
                     </p>
-                    <p class="cda-detail-note" id="cda-detail-note" hidden></p><a class="cda-visit" id="cda-visit"
-                        href="https://closdesarts.be/contact" target="_blank" rel="noopener">Organiser une visite <span
-                            aria-hidden="true">↗</span></a><button class="cda-available-link" id="cda-available-link"
+                    <p class="cda-detail-note" id="cda-detail-note" hidden></p><a class="cda-visit" id="cda-visit" data-i18n-text="visit"
+                        href="https://www.closdesarts.be/contact" target="_blank" rel="noopener">Organiser une visite <span
+                            aria-hidden="true"><svg class="cda-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg></span></a><button class="cda-available-link" id="cda-available-link" data-i18n="seeAvailable"
                         hidden>Voir les terrains disponibles →</button>
                 </article>
                 <div class="cda-scene-bottom" id="cda-scene-bottom">
-                    <div class="cda-legend"><span><i class="cda-dot"></i>Disponible</span><span><i
-                                class="cda-dot cda-dot-sold"></i>Vendu</span><span><i
+                    <div class="cda-legend"><span data-i18n-text="legendAvailable"><i class="cda-dot"></i>Disponible</span><span data-i18n-text="legendSold"><i
+                                class="cda-dot cda-dot-sold"></i>Vendu</span><span data-i18n-text="legendSelected"><i
                                 class="cda-dot cda-dot-active"></i>Sélection</span></div>
-                    <div class="cda-help"><span class="cda-gesture"><img src="data:image/svg+xml;base64,PCEtLQp0YWdzOiBbZ2VzdHVyZSwgc3dpcGUsIHJpZ2h0LCBsZWZ0LCB1cCwgZG93biwgaGFuZCwgbW92ZSwgdHJhbnNmZXIsIHNoaWZ0XQpjYXRlZ29yeTogR2VzdHVyZXMKdmVyc2lvbjogIjEuNDMiCnVuaWNvZGU6ICJlZjUwIgotLT4KPHN2ZwogIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICBzdHJva2U9ImN1cnJlbnRDb2xvciIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAxM3YtOC41YTEuNSAxLjUgMCAwIDEgMyAwdjcuNSIgLz4KICA8cGF0aCBkPSJNMTEgMTEuNXYtMmExLjUgMS41IDAgMCAxIDMgMHYyLjUiIC8+CiAgPHBhdGggZD0iTTE0IDEwLjVhMS41IDEuNSAwIDAgMSAzIDB2MS41IiAvPgogIDxwYXRoIGQ9Ik0xNyAxMS41YTEuNSAxLjUgMCAwIDEgMyAwdjQuNWE2IDYgMCAwIDEgLTYgNmgtMmguMjA4YTYgNiAwIDAgMSAtNS4wMTIgLTIuN2wtLjE5NiAtLjNjLS4zMTIgLS40NzkgLTEuNDA3IC0yLjM4OCAtMy4yODYgLTUuNzI4YTEuNSAxLjUgMCAwIDEgLjUzNiAtMi4wMjJhMS44NjcgMS44NjcgMCAwIDEgMi4yOCAuMjhsMS40NyAxLjQ3IiAvPgogIDxwYXRoIGQ9Ik0yLjU0MSA1LjU5NGExMy40ODcgMTMuNDg3IDAgMCAxIDIuNDYgLTEuNDI3IiAvPgogIDxwYXRoIGQ9Ik0xNCAzLjQ1OGMxLjMyIC4zNTQgMi41NTggLjkwMiAzLjY4NSAxLjYxMiIgLz4KPC9zdmc+Cg==" alt="" aria-hidden="true" width="16" height="16">Glisser pour tourner</span><span class="cda-gesture"><img src="data:image/svg+xml;base64,PCEtLQp0YWdzOiBbem9vbSwgY29ybmVycywgc3RyZXRjaCwgYXJyb3dzLCBkaWFnb25hbCwgbmF2aWdhdGlvbiwgZmxvdywgbW92ZW1lbnQsIHJvdXRlLCBwYXRoXQpjYXRlZ29yeTogQXJyb3dzCnZlcnNpb246ICIxLjAiCnVuaWNvZGU6ICJlYTI3IgotLT4KPHN2ZwogIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICBzdHJva2U9ImN1cnJlbnRDb2xvciIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgNGw0IDBsMCA0IiAvPgogIDxwYXRoIGQ9Ik0xNCAxMGw2IC02IiAvPgogIDxwYXRoIGQ9Ik04IDIwbC00IDBsMCAtNCIgLz4KICA8cGF0aCBkPSJNNCAyMGw2IC02IiAvPgo8L3N2Zz4K" alt="" aria-hidden="true" width="16" height="16">Pincer pour zoomer</span></div>
+                    <div class="cda-help"><span class="cda-gesture" data-i18n-text="gestureRotate"><img src="data:image/svg+xml;base64,PCEtLQp0YWdzOiBbZ2VzdHVyZSwgc3dpcGUsIHJpZ2h0LCBsZWZ0LCB1cCwgZG93biwgaGFuZCwgbW92ZSwgdHJhbnNmZXIsIHNoaWZ0XQpjYXRlZ29yeTogR2VzdHVyZXMKdmVyc2lvbjogIjEuNDMiCnVuaWNvZGU6ICJlZjUwIgotLT4KPHN2ZwogIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICBzdHJva2U9ImN1cnJlbnRDb2xvciIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNOCAxM3YtOC41YTEuNSAxLjUgMCAwIDEgMyAwdjcuNSIgLz4KICA8cGF0aCBkPSJNMTEgMTEuNXYtMmExLjUgMS41IDAgMCAxIDMgMHYyLjUiIC8+CiAgPHBhdGggZD0iTTE0IDEwLjVhMS41IDEuNSAwIDAgMSAzIDB2MS41IiAvPgogIDxwYXRoIGQ9Ik0xNyAxMS41YTEuNSAxLjUgMCAwIDEgMyAwdjQuNWE2IDYgMCAwIDEgLTYgNmgtMmguMjA4YTYgNiAwIDAgMSAtNS4wMTIgLTIuN2wtLjE5NiAtLjNjLS4zMTIgLS40NzkgLTEuNDA3IC0yLjM4OCAtMy4yODYgLTUuNzI4YTEuNSAxLjUgMCAwIDEgLjUzNiAtMi4wMjJhMS44NjcgMS44NjcgMCAwIDEgMi4yOCAuMjhsMS40NyAxLjQ3IiAvPgogIDxwYXRoIGQ9Ik0yLjU0MSA1LjU5NGExMy40ODcgMTMuNDg3IDAgMCAxIDIuNDYgLTEuNDI3IiAvPgogIDxwYXRoIGQ9Ik0xNCAzLjQ1OGMxLjMyIC4zNTQgMi41NTggLjkwMiAzLjY4NSAxLjYxMiIgLz4KPC9zdmc+Cg==" alt="" aria-hidden="true" width="16" height="16">Glisser pour tourner</span><span class="cda-gesture" data-i18n-text="gesturePinch"><img src="data:image/svg+xml;base64,PCEtLQp0YWdzOiBbem9vbSwgY29ybmVycywgc3RyZXRjaCwgYXJyb3dzLCBkaWFnb25hbCwgbmF2aWdhdGlvbiwgZmxvdywgbW92ZW1lbnQsIHJvdXRlLCBwYXRoXQpjYXRlZ29yeTogQXJyb3dzCnZlcnNpb246ICIxLjAiCnVuaWNvZGU6ICJlYTI3IgotLT4KPHN2ZwogIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIKICB3aWR0aD0iMjQiCiAgaGVpZ2h0PSIyNCIKICB2aWV3Qm94PSIwIDAgMjQgMjQiCiAgZmlsbD0ibm9uZSIKICBzdHJva2U9ImN1cnJlbnRDb2xvciIKICBzdHJva2Utd2lkdGg9IjIiCiAgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIgogIHN0cm9rZS1saW5lam9pbj0icm91bmQiCj4KICA8cGF0aCBkPSJNMTYgNGw0IDBsMCA0IiAvPgogIDxwYXRoIGQ9Ik0xNCAxMGw2IC02IiAvPgogIDxwYXRoIGQ9Ik04IDIwbC00IDBsMCAtNCIgLz4KICA8cGF0aCBkPSJNNCAyMGw2IC02IiAvPgo8L3N2Zz4K" alt="" aria-hidden="true" width="16" height="16">Pincer pour zoomer</span></div>
                 </div>
             </section>
         </main>
@@ -1599,7 +1610,7 @@ html, body { background: #D6D1C4; }
          * Sold lots remain selectable. Lot 10's contradictory surface is not asserted.
          */
         window.CDA_DATA = {
-            updated: '12 septembre 2026', contactUrl: 'https://closdesarts.be/contact',
+            updated: '12 septembre 2026', contactUrl: 'https://www.closdesarts.be/contact',
             photos: [{ src: 'photos/1.webp', title: 'Le clos, aujourd’hui', caption: 'Vue aérienne du lotissement réalisé — terrains nus.' }, { src: 'photos/2.webp', title: 'Une arrivée paysagère', caption: 'La voirie et ses aménagements, vers le Clos des Armuriers.' }, { src: 'photos/3.webp', title: 'Les détails du quotidien', caption: 'Voirie, cheminements et plantations en place.' }],
             lots: [
                 { id: 1, name: 'L’Aube Claire', area: 866, status: 'sold', orientation: 'Nord', tag: 'Au bord des espaces plantés', description: 'À l’extrémité de la rangée nord, cette parcelle jouxte la bande paysagère longeant la voirie.', polygon: [[190, 70], [428, 70], [428, 530], [190, 530]], label: [310, 270] },
@@ -1615,6 +1626,34 @@ html, body { background: #D6D1C4; }
             ]
         };
 
+    
+        /* Version néerlandaise (activée par ?lang=nl, que le bloc Webflow ajoute sur /nl).
+         * Seuls les textes sont traduits : statuts, surfaces et tracés restent dans CDA_DATA,
+         * donc passer un lot en « sold » met à jour les deux langues d'un coup.
+         * Les noms des lots restent en français, comme sur le site NL.
+         * Vocabulaire aligné sur www.closdesarts.be/nl : kavel, perceel, bouwrijp, vrijstaande woning. */
+        window.CDA_DATA_NL = {
+            contactUrl: 'https://www.closdesarts.be/nl/contact',
+            orientation: { Nord: 'Noord', Est: 'Oost', Sud: 'Zuid', Ouest: 'West' },
+            photos: [
+                { title: 'Het domein vandaag', caption: 'Luchtbeeld van de aangelegde verkaveling — onbebouwde kavels.' },
+                { title: 'Een groene entree', caption: 'De weg en de inrichting ervan, richting Clos des Armuriers.' },
+                { title: 'Harmonie tot in het detail', caption: 'Weg, wandelpaden en beplanting zijn al aangelegd.' }
+            ],
+            lots: {
+                1: { tag: 'Aan de rand van de groenzone', description: 'Aan het uiteinde van de noordelijke rij grenst dit perceel aan de groenstrook langs de weg.' },
+                2: { tag: 'Midden in de noordelijke rij', description: 'Een regelmatig perceel tussen kavel 1 en 3, aan de achterzijde begrensd door de bestaande haag rond het domein.' },
+                3: { tag: 'Vlak bij het pleintje', description: 'Een perceel in de noordelijke rij, vlak bij het pleintje en de bezoekersparkeerplaatsen.' },
+                4: { tag: 'Het ruimste perceel, achteraan', description: 'Het grootste perceel van het project ligt in de noordoostelijke hoek, aan het einde van de binnenweg.' },
+                5: { tag: 'Open naar het oosten', description: 'Aan het einde van de binnenweg ligt dit oostelijk georiënteerde perceel, tussen kavel 4 en 6.' },
+                6: { tag: 'Hoekperceel aan het wandelpad', description: 'Een groot hoekperceel in het zuidoosten van het domein, begrensd door het wandelpad langs de rand van de verkaveling.' },
+                7: { tag: 'Tussen pleintje en wandelpad', description: 'In de zuidelijke rij loopt dit perceel van het pleintje tot aan het wandelpad langs het domein.' },
+                8: { tag: 'Midden in de zuidelijke rij', description: 'Een centraal gelegen perceel in de zuidelijke rij, tussen kavel 7 en 9, met het wandelpad aan de achterzijde.' },
+                9: { tag: 'Vooraan in de zuidelijke rij', description: 'Dit perceel ligt aan het begin van de zuidelijke rij, vlak bij de toegang en het wandelpad.' },
+                10: { tag: 'Apart van de hoofdrijen', description: 'Een langgerekt perceel ten westen van de toegangsweg, apart van de twee hoofdrijen van het domein.' }
+            }
+        };
+
     </script>
     <script>
         /* Orthographic 3D mesh renderer. Uses Canvas 2D, including in browsers without
@@ -1626,7 +1665,7 @@ html, body { background: #D6D1C4; }
             constructor(canvas, pins, lots, select) {
                 this.canvas = canvas; this.ctx = canvas.getContext('2d'); this.pinsHost = pins; this.lots = lots; this.onSelect = select; this.active = null; this.hover = null; this.filter = 'all'; this.view = '3d'; this.zoom = 1.65; this.yaw = 1.008626; this.pitch = .4; this.width = 1; this.height = 1; this.geometry = []; this.groundShapes = []; this.lines = []; this.shadows = []; this.pointers = new Map(); this.reduced = matchMedia('(prefers-reduced-motion:reduce)').matches;
                 this.palette = { land: '#d7dccb', available: '#c5ceb2', sold: '#d8dacb', active: '#e4b397', border: '#959d7d', asphalt: '#9fa69e', paving: '#d8d6c8', curb: '#efeee4' };
-                this.pinNodes = lots.map(l => { const b = document.createElement('button'); b.className = 'cda-pin'; b.dataset.status = l.status; b.dataset.lot = l.id; b.setAttribute('aria-label', `Sélectionner le lot ${l.id}, ${l.name}`); b.setAttribute('aria-pressed', 'false'); b.textContent = String(l.id).padStart(2, '0'); b.onclick = () => this.onSelect(l.id); b.onpointerdown = e => e.stopPropagation(); b.onmouseenter = () => { this.hover = l.id; this.request() }; b.onmouseleave = () => { this.hover = null; this.request() }; pins.append(b); return b; });
+                this.pinNodes = lots.map(l => { const b = document.createElement('button'); b.className = 'cda-pin'; b.dataset.status = l.status; b.dataset.lot = l.id; b.setAttribute('aria-label', window.CDA_T ? window.CDA_T('pin', l) : `Sélectionner le lot ${l.id}, ${l.name}`); b.setAttribute('aria-pressed', 'false'); b.textContent = String(l.id).padStart(2, '0'); b.onclick = () => this.onSelect(l.id); b.onpointerdown = e => e.stopPropagation(); b.onmouseenter = () => { this.hover = l.id; this.request() }; b.onmouseleave = () => { this.hover = null; this.request() }; pins.append(b); return b; });
                 this.build(); this.bind(); this.observer = new ResizeObserver(() => this.resize()); this.observer.observe(canvas.parentElement); this.resize();
             }
             world(p, y = 0) { return [(p[0] - 460) / 12, y, (p[1] - 565) / 12]; }
@@ -1751,8 +1790,68 @@ html, body { background: #D6D1C4; }
         (() => {
             'use strict'; const data = window.CDA_DATA, $ = id => document.getElementById(id), root = $('cda-locator'), lots = $('cda-lots'); let selected = null, filter = 'all', view = '3d', photo = 0;
             if (new URLSearchParams(location.search).get('embed') === '1') root.classList.add('cda-embedded');
-            const format = n => n.toLocaleString('fr-BE'); const area = l => l.area ? `${format(l.area)} m²` : 'Surface à confirmer';
-            data.lots.forEach(l => { const b = document.createElement('button'); b.className = 'cda-lot'; b.dataset.lot = l.id; b.dataset.status = l.status; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', `Lot ${l.id}, ${l.name}, ${l.status === 'sold' ? 'vendu' : area(l)}`); b.innerHTML = `<span class="cda-lot-top"><span class="cda-lot-num">LOT ${String(l.id).padStart(2, '0')}</span><span class="cda-status" data-status="${l.status}">${l.status === 'sold' ? 'Vendu' : 'Disponible'}</span></span><span class="cda-lot-name"><span>${l.name}</span><span aria-hidden="true">↗</span></span><span class="cda-lot-meta">${area(l)} · ${l.orientation}</span>`; b.onclick = () => select(l.id); lots.append(b); });
+            /* Langue : ?lang=nl, posé par le bloc Webflow sur les pages /nl. Le français reste la langue
+               du balisage ; le néerlandais remplace les textes au chargement. */
+            const lang = new URLSearchParams(location.search).get('lang') === 'nl' ? 'nl' : 'fr';
+            const I18N = {
+                fr: {
+                    locale: 'fr-BE', lot: 'LOT', sold: 'Vendu', available: 'Disponible',
+                    areaTbc: 'Surface à confirmer', tbc: 'À confirmer',
+                    sceneTitle: 'Votre futur cadre de vie.', sceneEyebrow: 'LE CLOS, EN PERSPECTIVE',
+                    card: (l, a) => `Lot ${l.id}, ${l.name}, ${l.status === 'sold' ? 'vendu' : a}`,
+                    announce: (l, a) => `Lot ${l.id}, ${l.name}. ${a}. Orientation ${l.orientation}. ${l.status === 'sold' ? 'Vendu.' : 'Disponible.'}`,
+                    shownAvailable: n => `${n} terrains disponibles affichés.`, shownAll: n => `Les ${n} terrains sont affichés.`,
+                    overview: 'Vue d’ensemble du lotissement.', pin: l => `Sélectionner le lot ${l.id}, ${l.name}`
+                },
+                nl: {
+                    locale: 'nl-BE', lot: 'KAVEL', sold: 'Verkocht', available: 'Beschikbaar',
+                    areaTbc: 'Oppervlakte te bevestigen', tbc: 'Te bevestigen',
+                    sceneTitle: 'Uw toekomstige woonomgeving.', sceneEyebrow: 'HET DOMEIN IN PERSPECTIEF',
+                    card: (l, a) => `Kavel ${l.id}, ${l.name}, ${l.status === 'sold' ? 'verkocht' : a}`,
+                    announce: (l, a) => `Kavel ${l.id}, ${l.name}. ${a}. Oriëntatie ${l.orientation}. ${l.status === 'sold' ? 'Verkocht.' : 'Beschikbaar.'}`,
+                    shownAvailable: n => `${n} beschikbare kavels weergegeven.`, shownAll: n => `Alle ${n} kavels worden weergegeven.`,
+                    overview: 'Overzicht van de verkaveling.', pin: l => `Kavel ${l.id} selecteren, ${l.name}`,
+                    ui: {
+                        sidebar: 'De tien percelen', filters: 'Beschikbaarheid van de kavels',
+                        filterAll: 'Alle kavels', filterAvailable: 'Beschikbaar',
+                        scene: 'Interactieve maquette van de verkaveling', views: 'Weergave',
+                        view3d: '3D-weergave', viewPlan: 'Bovenaanzicht', viewPhotos: 'Foto’s',
+                        canvas: 'Maquette van Clos des Arts. Sleep om te draaien, gebruik de pijltjestoetsen of kies een kavel in de lijst.',
+                        photoPrev: 'Vorige foto', photoNext: 'Volgende foto', controls: 'Maquette bedienen',
+                        zoomIn: 'Inzoomen', zoomOut: 'Uitzoomen', rotateLeft: 'Naar links draaien', rotate: 'Draaien',
+                        resetView: 'Maquette centreren', reset: 'Centreren', compass: 'Noordpijl', closeCard: 'Kavelfiche sluiten',
+                        area: 'Oppervlakte', orientation: 'Oriëntatie',
+                        common: 'Bouwrijp perceel · Vrijstaande woning<br>Vrije keuze van aannemer en architect',
+                        visit: 'Plan een bezichtiging', seeAvailable: 'Bekijk de beschikbare kavels →',
+                        legendAvailable: 'Beschikbaar', legendSold: 'Verkocht', legendSelected: 'Selectie',
+                        gestureRotate: 'Slepen om te draaien', gesturePinch: 'Knijpen om te zoomen'
+                    }
+                }
+            };
+            const T = I18N[lang];
+            window.CDA_T = (k, ...a) => typeof T[k] === 'function' ? T[k](...a) : T[k];
+            if (lang === 'nl') {
+                const NL = window.CDA_DATA_NL, ui = T.ui;
+                data.contactUrl = NL.contactUrl;
+                data.lots.forEach(l => { Object.assign(l, NL.lots[l.id]); l.orientation = NL.orientation[l.orientation] || l.orientation; });
+                data.photos.forEach((ph, i) => Object.assign(ph, NL.photos[i]));
+                const set = (attr, fn) => root.querySelectorAll(`[${attr}]`).forEach(el => { const k = el.getAttribute(attr); if (ui[k] != null) fn(el, ui[k]); });
+                set('data-i18n', (el, v) => { el.textContent = v; });
+                set('data-i18n-html', (el, v) => { el.innerHTML = v; });
+                set('data-i18n-aria', (el, v) => el.setAttribute('aria-label', v));
+                set('data-i18n-title', (el, v) => el.setAttribute('title', v));
+                set('data-i18n-text', (el, v) => { const n = [...el.childNodes].find(c => c.nodeType === 3 && c.nodeValue.trim()); if (n) n.nodeValue = n.nodeValue.replace(n.nodeValue.trim(), v); });
+                document.documentElement.lang = 'nl'; document.title = 'Clos des Arts — De percelen';
+            }
+            $('cda-visit').href = data.contactUrl;
+            /* Compteurs et annonces calculés depuis les données : vendre un lot = changer un seul statut. */
+            const total = data.lots.length, avail = data.lots.filter(l => l.status === 'available').length;
+            document.querySelector('[data-filter="all"] span').textContent = total;
+            document.querySelector('[data-filter="available"] span').textContent = avail;
+            /* Flèche en SVG : le caractère ↗ s'affiche en emoji sur iOS et Android. */
+            const ARROW = '<svg class="cda-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12 12 4M5.5 4H12v6.5"/></svg>';
+            const format = n => n.toLocaleString(T.locale); const area = l => l.area ? `${format(l.area)} m²` : T.areaTbc;
+            data.lots.forEach(l => { const b = document.createElement('button'); b.className = 'cda-lot'; b.dataset.lot = l.id; b.dataset.status = l.status; b.setAttribute('aria-pressed', 'false'); b.setAttribute('aria-label', T.card(l, area(l))); b.innerHTML = `<span class="cda-lot-top"><span class="cda-lot-num">${T.lot} ${String(l.id).padStart(2, '0')}</span><span class="cda-status" data-status="${l.status}">${l.status === 'sold' ? T.sold : T.available}</span></span><span class="cda-lot-name"><span>${l.name}</span><span aria-hidden="true">${ARROW}</span></span><span class="cda-lot-meta">${area(l)} · ${l.orientation}</span>`; b.onclick = () => select(l.id); lots.append(b); });
             // Fade only at edges with more content; preserve the first/last card at rest.
             const updateListFade = () => {
                 const remaining = Math.max(0, lots.scrollHeight - lots.clientHeight);
@@ -1766,14 +1865,17 @@ html, body { background: #D6D1C4; }
             Array.from(lots.children).forEach(card => listFadeResize.observe(card));
             new MutationObserver(updateListFade).observe(lots, { subtree: true, attributes: true, attributeFilter: ['hidden'], childList: true });
             updateListFade();
+            /* La hauteur du titre varie avec la langue et l'accroche du lot : les onglets s'y calent. */
+            const titleBox = root.querySelector('.cda-scene-title');
+            new ResizeObserver(() => root.querySelector('.cda-scene').style.setProperty('--cda-title-h', Math.ceil(titleBox.getBoundingClientRect().height) + 'px')).observe(titleBox);
             const scene = new CDAScene($('cda-canvas'), $('cda-pins'), data.lots, select);
             function say(text) { $('cda-announcement').textContent = text; }
-            function select(id) { if (view === 'photos') setView('3d'); selected = id; const l = data.lots.find(l => l.id === id); document.querySelectorAll('.cda-lot').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.lot === id))); scene.select(id); $('cda-detail').hidden = false; $('cda-detail-label').textContent = `LOT ${String(id).padStart(2, '0')} · ${l.status === 'sold' ? 'VENDU' : 'DISPONIBLE'}`; $('cda-detail-title').textContent = l.name; $('cda-detail-description').textContent = l.description; $('cda-area').innerHTML = l.area ? `${format(l.area)} <small>m²</small>` : '<small>À confirmer</small>'; $('cda-orientation').textContent = l.orientation; $('cda-detail-note').textContent = l.note || ''; $('cda-detail-note').hidden = !l.note; $('cda-visit').hidden = l.status === 'sold'; $('cda-available-link').hidden = l.status !== 'sold'; $('cda-scene-title').textContent = l.tag; $('cda-scene-eyebrow').textContent = `LOT ${String(id).padStart(2, '0')} · ${l.name.toUpperCase()}`; say(`Lot ${id}, ${l.name}. ${area(l)}. Orientation ${l.orientation}. ${l.status === 'sold' ? 'Vendu.' : 'Disponible.'}`); requestAnimationFrame(() => scene.resize()); root.dispatchEvent(new CustomEvent('cda:lot-select', { bubbles: true, detail: { id: l.id, name: l.name, status: l.status, area: l.area, orientation: l.orientation } })); }
-            function clear() { selected = null; scene.select(null); $('cda-detail').hidden = true; document.querySelectorAll('.cda-lot').forEach(b => b.setAttribute('aria-pressed', 'false')); $('cda-scene-title').textContent = 'Votre futur cadre de vie.'; $('cda-scene-eyebrow').textContent = 'LE CLOS, EN PERSPECTIVE'; requestAnimationFrame(() => scene.resize()); }
-            function setFilter(f) { filter = f; document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === f))); document.querySelectorAll('.cda-lot').forEach(b => b.hidden = f === 'available' && b.dataset.status === 'sold'); scene.setFilter(f); if (selected && f === 'available' && data.lots.find(l => l.id === selected).status === 'sold') clear(); say(f === 'available' ? '5 terrains disponibles affichés.' : 'Les 10 terrains sont affichés.'); }
+            function select(id) { if (view === 'photos') setView('3d'); selected = id; const l = data.lots.find(l => l.id === id); document.querySelectorAll('.cda-lot').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.lot === id))); scene.select(id); $('cda-detail').hidden = false; $('cda-detail-label').textContent = `${T.lot} ${String(id).padStart(2, '0')} · ${(l.status === 'sold' ? T.sold : T.available).toUpperCase()}`; $('cda-detail-title').textContent = l.name; $('cda-detail-description').textContent = l.description; $('cda-area').innerHTML = l.area ? `${format(l.area)} <small>m²</small>` : `<small>${T.tbc}</small>`; $('cda-orientation').textContent = l.orientation; $('cda-detail-note').textContent = l.note || ''; $('cda-detail-note').hidden = !l.note; $('cda-visit').hidden = l.status === 'sold'; $('cda-available-link').hidden = l.status !== 'sold'; $('cda-scene-title').textContent = l.tag; $('cda-scene-eyebrow').textContent = `${T.lot} ${String(id).padStart(2, '0')} · ${l.name.toUpperCase()}`; say(T.announce(l, area(l))); requestAnimationFrame(() => scene.resize()); root.dispatchEvent(new CustomEvent('cda:lot-select', { bubbles: true, detail: { id: l.id, name: l.name, status: l.status, area: l.area, orientation: l.orientation } })); }
+            function clear() { selected = null; scene.select(null); $('cda-detail').hidden = true; document.querySelectorAll('.cda-lot').forEach(b => b.setAttribute('aria-pressed', 'false')); $('cda-scene-title').textContent = T.sceneTitle; $('cda-scene-eyebrow').textContent = T.sceneEyebrow; requestAnimationFrame(() => scene.resize()); }
+            function setFilter(f) { filter = f; document.querySelectorAll('[data-filter]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.filter === f))); document.querySelectorAll('.cda-lot').forEach(b => b.hidden = f === 'available' && b.dataset.status === 'sold'); scene.setFilter(f); if (selected && f === 'available' && data.lots.find(l => l.id === selected).status === 'sold') clear(); say(f === 'available' ? T.shownAvailable(avail) : T.shownAll(total)); }
             function showPhoto() { const p = data.photos[photo]; $('cda-photo').src = p.src; $('cda-photo').alt = p.caption; $('cda-photo-title').textContent = p.title; $('cda-photo-caption').textContent = p.caption; $('cda-photo-index').textContent = `${photo + 1} / ${data.photos.length}`; }
             function setView(v) { view = v; root.dataset.view = v; document.querySelectorAll('[data-view]').forEach(b => { if (b.tagName === 'BUTTON') b.setAttribute('aria-pressed', String(b.dataset.view === v)); }); const photos = v === 'photos'; $('cda-photos').hidden = !photos; $('cda-canvas-wrap').hidden = photos; $('cda-camera-controls').hidden = photos; $('cda-compass').hidden = photos; $('cda-scene-bottom').hidden = photos; if (photos) { clear(); showPhoto(); } else { scene.setView(v); requestAnimationFrame(() => scene.resize()); } }
-            document.querySelectorAll('[data-filter]').forEach(b => b.onclick = () => setFilter(b.dataset.filter)); document.querySelectorAll('button[data-view]').forEach(b => b.onclick = () => setView(b.dataset.view)); $('cda-close').onclick = () => { const id = selected; clear(); document.querySelector(`.cda-lot[data-lot="${id}"]`)?.focus({ preventScroll: true }); }; $('cda-available-link').onclick = () => { setFilter('available'); clear(); }; $('cda-zoom-in').onclick = () => scene.zoomBy(1.18); $('cda-zoom-out').onclick = () => scene.zoomBy(1 / 1.18); $('cda-rotate-left').onclick = () => scene.turn(); $('cda-reset').onclick = () => scene.reset(); if ($('cda-clear')) $('cda-clear').onclick = () => { clear(); setFilter('all'); setView('3d'); scene.reset(); say('Vue d’ensemble du lotissement.'); }; $('cda-photo-prev').onclick = () => { photo = (photo + data.photos.length - 1) % data.photos.length; showPhoto(); }; $('cda-photo-next').onclick = () => { photo = (photo + 1) % data.photos.length; showPhoto(); }; document.addEventListener('keydown', e => { if (e.key === 'Escape' && selected) $('cda-close').click(); });
+            document.querySelectorAll('[data-filter]').forEach(b => b.onclick = () => setFilter(b.dataset.filter)); document.querySelectorAll('button[data-view]').forEach(b => b.onclick = () => setView(b.dataset.view)); $('cda-close').onclick = () => { const id = selected; clear(); document.querySelector(`.cda-lot[data-lot="${id}"]`)?.focus({ preventScroll: true }); }; $('cda-available-link').onclick = () => { setFilter('available'); clear(); }; $('cda-zoom-in').onclick = () => scene.zoomBy(1.18); $('cda-zoom-out').onclick = () => scene.zoomBy(1 / 1.18); $('cda-rotate-left').onclick = () => scene.turn(); $('cda-reset').onclick = () => scene.reset(); if ($('cda-clear')) $('cda-clear').onclick = () => { clear(); setFilter('all'); setView('3d'); scene.reset(); say(T.overview); }; $('cda-photo-prev').onclick = () => { photo = (photo + data.photos.length - 1) % data.photos.length; showPhoto(); }; $('cda-photo-next').onclick = () => { photo = (photo + 1) % data.photos.length; showPhoto(); }; document.addEventListener('keydown', e => { if (e.key === 'Escape' && selected) $('cda-close').click(); });
             root.dataset.view = '3d'; window.ClosDesArtsLocator = { selectLot: select, clearSelection: clear, setView, setFilter, getSelection: () => selected };
             setFilter('available');
             select(3);
