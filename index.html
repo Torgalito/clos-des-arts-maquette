@@ -1596,6 +1596,11 @@ html, body { background: #D6D1C4; }
     .cda-legend-note { padding-left: 10px; }
     .cda-zone-label { display: none; }
 }
+/* Petits téléphones (cadre de 328 à 380 px) : la rangée d'options et la boussole tiennent aussi en néerlandais. */
+@media (max-width: 380px) {
+    .cda .cda-options button { padding: 8px 7px 8px 6px; gap: 4px; }
+    .cda .cda-view-tabs button { padding-left: 8px; padding-right: 8px; }
+}
 /* Mode stand (?stand=1) : la maquette occupe tout l'écran d'une tablette ou d'un portable. */
 .cda-stand.cda-offline .cda-visit { display: none; }
 html.cda-stand-page, html.cda-stand-page body { height: 100%; }
@@ -1971,7 +1976,7 @@ html.cda-stand-page, html.cda-stand-page body { height: 100%; }
                         visit: 'Plan een bezichtiging', seeAvailable: 'Bekijk de beschikbare kavels →',
                         legendAvailable: 'Beschikbaar', legendSold: 'Verkocht', legendSelected: 'Selectie',
                         gestureRotate: 'Slepen om te draaien', gesturePinch: 'Knijpen om te zoomen',
-                        options: 'Wat de maquette toont', optHouses: 'Woningvoorbeelden', optHousesShort: 'Voorbeelden', optZones: 'Bouwzone', optZonesShort: 'Bouwzone', optSun: 'Zon',
+                        options: 'Wat de maquette toont', optHouses: 'Woningvoorbeelden', optHousesShort: 'Voorbeelden', optZones: 'Bouwzone', optZonesShort: 'Zone', optSun: 'Zon',
                         sunSeasons: 'Seizoen', sunSummer: 'Zomer', sunMid: 'Tussenseizoen', sunWinter: 'Winter', sunPlay: 'De dag afspelen', sunHour: 'Uur van de dag',
                         zone: 'Bouwzone', gabarit: 'Bouwprofiel', gabaritValue: 'Gelijkvloers + 1', fullscreen: 'Volledig scherm',
                         planNote: 'Bouwzone en bouwprofiel volgens het plan van de verkavelingsvergunning. De woningvolumes zijn indicatief.', legendNote: 'Indicatieve voorbeelden, met zadeldak of plat dak'
